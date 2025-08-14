@@ -43,3 +43,6 @@ function sorteio() {
 
 console.log("\n=== SORTEIO DE NOMES ===");
 sorteio();
+
+
+

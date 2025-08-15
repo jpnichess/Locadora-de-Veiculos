@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Menu from "./components/Menu.jsx";
-import Veiculos from "./components/Pages/Veiculos.jsx";
 
 function App() {
   const [pages] = useState([

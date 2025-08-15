@@ -12,7 +12,7 @@ function Veiculos() {
     query.set("image", veiculo.image);
     query.set("modelo", veiculo.title);
     query.set("marca", veiculo.marca);
-    query.set("cor", veiculo.modelo);
+    query.set("cor", veiculo.cor);
     query.set("quilometragem", veiculo.quilometragem);
     query.set("combustivel", veiculo.combustivel);
     query.set("valordiaria", veiculo.valorDiaria);
@@ -46,27 +46,54 @@ function Veiculos() {
   // };
 
   return (
-    <section className="w-full min-h-screen relative z-0">
-      <h2 className="text-2xl font-bold">Veículos Cadastrados</h2>
+    <section className="w-full min-h-screen bg-gray-100 p-6">
+      <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+        Veículos Cadastrados
+      </h2>
+
       {veiculos.length === 0 ? (
-        <p>Nenhum veículo encontrado.</p>
+        <p className="text-center text-gray-500">Nenhum veículo encontrado.</p>
       ) : (
-        <div className="px-5 py-12 max-w-7xl mx-auto flex flex-col relative z-10">
-          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="max-w-7xl mx-auto">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {veiculos.map((veiculo) => (
               <li
                 key={veiculo.id}
-                className="bg-white p-4 rounded shadow flex flex-col"
+                className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col items-center transition-transform transform hover:scale-105"
               >
-                <div className="w-[300px] h-[500px] bg-red-500 rounded-lg flex justify-start items-center flex-col">
-                  <h2 className="">
+                {/* Imagem centralizada */}
+                <div className="w-full h-64 bg-gray-200 flex justify-center items-center">
+                  <img
+                    src={veiculo.image}
+                    alt={`${veiculo.marca} ${veiculo.title}`}
+                    className="object-cover h-full w-full"
+                  />
+                </div>
+
+                {/* Informações do veículo */}
+                <div className="p-4 flex flex-col items-center text-center space-y-2">
+                  <h3 className="text-lg font-semibold text-gray-800">
                     {veiculo.marca} {veiculo.title}
-                  </h2>
-                  <div className="w-[300px]">
-                  <button onClick={() => onSeeDetailsClick(veiculo)}>
-                    Details
+                  </h3>
+                  <p className="text-gray-600">{veiculo.modelo}</p>
+                  <p className="text-gray-600">{veiculo.placa}</p>
+                  <span
+                    className={`px-2 py-1 rounded-full text-white text-sm ${
+                      veiculo.disponivel ? "bg-green-500" : "bg-red-500"
+                    }`}
+                  >
+                    {veiculo.disponivel ? "Disponível" : "Indisponível"}
+                  </span>
+                </div>
+
+                {/* Botão de detalhes */}
+                <div className="w-full p-4 flex justify-center">
+                  <button
+                    onClick={() => onSeeDetailsClick(veiculo)}
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors"
+                  >
+                    Detalhes
                   </button>
-                  </div>
                 </div>
               </li>
             ))}

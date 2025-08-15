@@ -9,33 +9,18 @@ import Veiculos from './components/Pages/Veiculos.jsx'
 import CadastroVeiculos from "./components/Pages/CadastroVeiculos.jsx";
 import VeiculoDetail from "./components/Pages/VeiculoDetail.jsx";
 import Financeiro from "./components/Pages/Financeiro.jsx"
+import Locacao from './components/Pages/Locacao.jsx';
 
 const router = createBrowserRouter([
-{
-  path: "/",
-  element: <App />,
-},
-{
-  path: '/financeiro',
-  element: <Financeiro />
-},
-{
-  path: '/cadastro',
-  element: <CadastroVeiculos />
-},
-{
-  path: '/relatorios',
-  element: <Relatorios />
-},
-{
-  path: '/veiculos',
-  element: <Veiculos />
-},
-{
-  path: '/veiculos/:id',
-  element: <VeiculoDetail />
-}
+  { path: "/", element: <App /> },
+  { path: '/financeiro', element: <Financeiro /> },
+  { path: '/cadastro', element: <CadastroVeiculos /> },
+  { path: '/relatorios', element: <Relatorios /> },
+  { path: '/veiculos', element: <Veiculos /> },
+  { path: '/veiculos/:id', element: <VeiculoDetail /> },
+  { path: '/locacao/:id', element: <Locacao /> } // <- nova rota
 ]);
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
